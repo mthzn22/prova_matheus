@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<title>Devs em Apuros</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+	</head>
+	<body>
+
+		<nav class="navbar navbar-expand-lg bg-primary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Cuiabá Peixaria</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                  <button class="btn btn-secondary" type="submit">Ir</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+		<main>
+			<section class="container">
+				<h2>Gerenciar Pedidos</h2>
+				<table>
+					<thead>
+						<tr>
+							<th class="border">Nome do cliente</th>
+                            <th class="border">N° do pedido</th>
+							<th class="border">Valor Total</th>
+                            <th class="border">Status</th>
+							<th class="border">Pedido</th>
+						</tr>
+					</thead>
+					<tbody id="tabela-clientes">
+						<tr class="cliente" id="primeiro-cliente">
+							<td class="border info-nome">Paulo</td>
+							<td class="border info-numero__pedido">1</td>
+							<td class="border info-valor__total">R$22,90</td>
+							<td class="border info-status">Concluído</td>
+							<td class="border info-pedidos">
+								<li>pacu</li>
+								<li>pintado</li>
+								<li>refrigerante</li>
+							</td>
+						</tr>
+
+						<tr class="cliente" >
+							<td class="border info-nome">João</td>
+							<td class="border info-numero__pedido">2</td>
+							<td class="border info-valor__total">R$20,99</td>
+							<td class="border info-status">Concluído</td>
+							<td class="border info-pedidos">
+								<li>pacu</li>
+								<li>pintado</li>
+								<li>cerveja</li>
+							</td>
+						</tr>
+
+						<tr class="cliente" >
+							<td class="border info-nome">Erica</td>
+							<td class="border info-numero__pedido">3</td>
+							<td class="border info-valor__total">R$29,90</td>
+                            <td class="border info-status">Concluído</td>
+							<td class="border info-pedidos">
+								<li>pacu</li>
+								<li>pintado</li>
+								<li>suco de laranja</li>
+							</td>
+						</tr>
+
+						<tr class="cliente">
+							<td class="border info-nome">Douglas</td>
+							<td class="border info-numero__pedido">4</td>
+							<td class="border info-valor__total">R$34,90</td>
+							<td class="border info-status">Concluído</td>
+                            <td class="border info-pedidos">
+								<li>pacu</li>
+								<li>pintado</li>
+								<li>suco de laranja</li>
+							</td>
+						</tr>
+						<tr class="cliente" >
+							<td class="border info-nome">Tatiana</td>
+							<td class="border info-numero__pedido">5</td>
+							<td class="border info-valor__total">R$47,90</td>
+							<td class="border info-status">Concluído</td>
+                            <td class="border info-pedidos">
+								<li>pacu</li>
+								<li>pintado</li>
+								<li>refrigerante</li>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<span id="erro-ajax" class="invisivel">Erro ao buscar os pacientes</span>
+			</section>
+		</main>
+            <br>
+		<section class="container">
+		    <h2 id="titulo-form">Adicione seu pedido:</h2>
+			<ul id="mensagens-erro">
+
+			</ul>
+		    <form id="form-adiciona">
+		        <div class="grupo">
+		            <label for="nome">Nome:</label>
+		            <input id="nome" name="nome" type="text" placeholder="digite o seu nome" class="campo campo-medio"> 
+		        </div>
+		        <div class="grupo">
+		            <label for="numero__pedido">N° do pedido:</label>
+		            <input id="numero__pedido" name="numero__pedido" type="number" placeholder="digite o N° do pedido" class="campo campo-medio">
+		        </div>
+				<div class="grupo">
+		            <label for="valor__total">Valor Total:</label>
+		            <input id="valor__total" name="valor__total" type="text" placeholder="digite o valor total" class="campo campo-medio">
+		        </div>
+                <div class="grupo">
+		            <label for="status">Status do pedido:</label>
+		       		<input id="status" name="status" type="text" placeholder="digite o status do pedido" class="campo campo-medio"> 
+		        </div>
+				<div class="grupo">
+		            <label for="pedido">Pedido:</label>
+					<input id="pedido" name="pedido" type="text" placeholder="digite o seu pedido" class="campo campo-medio">
+		        </div>
+		        <button id="adicionar-pedido" class="botao bto-principal">Adicionar</button>
+		    </form>
+		</section>
+
+		<!-- Sempre criar o link com script ao final do body -->
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+              <p class="col-md-4 mb-0 text-muted">&copy; 2023 Company, Inc</p>
+          
+              <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+              </ul>
+            </footer>
+          </div>
+
+		  <script src="js/DeleteData.js"></script>
+		  <script src="js/CrateData.js"></script>
+		  <script src="js/ValidarFunction.js"></script>
+		
+
+	</body>
+</html>
